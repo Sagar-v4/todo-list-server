@@ -1,0 +1,3 @@
+export enum DATABASE_CONNECTION_NAME {
+  TODO_LIST_DB = "TODO_LIST_DB",
+}
