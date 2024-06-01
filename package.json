@@ -21,7 +21,8 @@
     "check-formats": "npm run prettier -- --list-different",
     "clean": "rm -rf node_modules coverage dist .nyc_output && npm cache clean --force",
     "validate": "yarn check-formats && yarn lint && yarn build",
-    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts)\""
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts)\"",
+    "submodule": "git submodule update --init --remote"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

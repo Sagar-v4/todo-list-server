@@ -1,0 +1,6 @@
+[submodule "src/shared/nestjs"]
+	path = src/shared/nestjs
+	url = git@github.com:Sagar-v4/next-util-nestjs.git
+[submodule "src/shared/common"]
+	path = src/shared/common
+	url = git@github.com:Sagar-v4/next-util-common.git
