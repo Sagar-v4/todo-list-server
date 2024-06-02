@@ -1,6 +1,7 @@
 import { registerAs } from "@nestjs/config";
 
-import { DATABASE_CONNECTION_NAME, ENVIRONMENT } from "@/constants";
+import { ENVIRONMENT } from "@/common/env";
+import { DATABASE_CONNECTION_NAME } from "@/constants";
 
 export const TODO_LIST_DB_CONFIG = registerAs(
   DATABASE_CONNECTION_NAME.TODO_LIST_DB,
