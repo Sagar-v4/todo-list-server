@@ -15,10 +15,10 @@ RUN adduser --system --uid 1001 nestjs
 COPY --chown=nestjs:nodejs . .
 
 # Install dependencies
-RUN yarn --frozen-lockfile
+RUN npm i --frozen-lockfile
 
 # Set Docker as a non-root user
-USER node
+USER nestjs
 
 #
 # 🏡 Production Build
@@ -29,7 +29,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat
 
 # Set to production environment
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Re-create non-root user for Docker
 RUN addgroup --system --gid 1001 nodejs
@@ -42,13 +42,13 @@ COPY --chown=nestjs:nodejs --from=dev /app/node_modules ./node_modules
 COPY --chown=nestjs:nodejs . .
 
 # Generate the production build. The build script runs "nest build" to compile the application.
-RUN yarn build
+RUN npm run build
 
 # Install only the production dependencies and clean cache to optimize image size.
-RUN yarn --frozen-lockfile --production && yarn cache clean
+RUN npm i --frozen-lockfile --production && npm cache verify
 
 # Set Docker as a non-root user
-USER node
+USER nestjs
 
 #
 # 🚀 Production Server
@@ -59,7 +59,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat
 
 # Set to production environment
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Re-create non-root user for Docker
 RUN addgroup --system --gid 1001 nodejs
