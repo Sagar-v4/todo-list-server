@@ -1,3 +1,0 @@
-[submodule "src/shared/common"]
-	path = src/shared/common
-	url = git@github.com:Sagar-v4/next-util-common.git

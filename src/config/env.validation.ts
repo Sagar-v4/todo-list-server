@@ -1,7 +1,12 @@
 import { plainToInstance } from "class-transformer";
 import { IsEnum, IsNumber, Max, Min, validateSync } from "class-validator";
 
-import { ENVIRONMENT } from "@/common/env";
+export enum ENVIRONMENT {
+  LOCAL = "LOCAL",
+  DEVELOP = "DEVELOP",
+  STAGING = "STAGING",
+  PRODUCTION = "PRODUCTION",
+}
 
 class EnvVariables {
   @IsEnum(ENVIRONMENT)

@@ -1,6 +1,5 @@
 import { registerAs } from "@nestjs/config";
 
-import { ENVIRONMENT } from "@/common/env";
 import { DATABASE_CONNECTION_NAME } from "@/constants";
 
 export const TODO_LIST_DB_CONFIG = registerAs(
@@ -8,20 +7,9 @@ export const TODO_LIST_DB_CONFIG = registerAs(
   () => {
     return {
       MONGODB_URI: process.env["MONGODB_URI"],
-      DATABASE_NAME: process.env["DATABASE_NAME"],
-      MONGODB_CONFIG: process.env["MONGODB_CONFIG"],
-      MONGODB_LOCAL_URI: "mongodb://localhost:27017",
-
-      isLocal() {
-        return process.env["NODE_ENV"] === ENVIRONMENT.LOCAL;
-      },
-
-      getDbUri() {
-        return this.isLocal() ? this.MONGODB_LOCAL_URI : this.MONGODB_URI;
-      },
 
       get dbUri() {
-        return `${this.getDbUri()}/${this.DATABASE_NAME}?${this.MONGODB_CONFIG}`;
+        return this.MONGODB_URI;
       },
     };
   }
